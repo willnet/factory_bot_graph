@@ -69,5 +69,5 @@ not shown.
 ## Development
 
 ```sh
-ruby -Ilib:test -e 'Dir["test/**/*_test.rb"].sort.each { |file| require_relative file }'
+ruby -Ilib:test -e 'Dir["test/**/*_test.rb"].sort.each { |file| require File.expand_path(file) }'
 ```

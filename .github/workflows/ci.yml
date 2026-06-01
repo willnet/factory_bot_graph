@@ -34,7 +34,7 @@ jobs:
           bundler-cache: true
 
       - name: Run tests
-        run: bundle exec ruby -Ilib:test -e 'Dir["test/**/*_test.rb"].sort.each { |file| require_relative file }'
+        run: bundle exec ruby -Ilib:test -e 'Dir["test/**/*_test.rb"].sort.each { |file| require File.expand_path(file) }'
 
       - name: Build gem
         run: bundle exec gem build factory_bot_graph.gemspec
