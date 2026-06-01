@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.bindir = "bin"
   spec.executables = ["factory_bot_graph"]
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 3.3"
   spec.license = "MIT"
 
   spec.add_dependency "prism"

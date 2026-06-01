@@ -11,6 +11,8 @@ relationships between factories. It helps answer a deceptively hard question:
 The parser does not load Rails or evaluate factory definitions. Running it does
 not create records or trigger application code.
 
+Ruby 3.3 or later is required.
+
 ## Usage
 
 Run the executable from the root of a Rails application:
