@@ -97,8 +97,15 @@ module FactoryBotGraph
     end
 
     def resolve_implicit_relations
+      seen = {}
       @implicit_relations.each do |source, target, trait, file, line|
-        add_edge(source, target, "implicit association", trait, file, line) if factories.key?(target)
+        next unless factories.key?(target)
+
+        key = [source, target, trait]
+        next if seen[key]
+
+        seen[key] = true
+        add_edge(source, target, "implicit association", trait, file, line)
       end
       @edges.uniq!
     end

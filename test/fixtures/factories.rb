@@ -6,6 +6,7 @@ FactoryBot.define do
   factory :post do
     association :writer, factory: :author
     account
+    account
 
     trait :with_comments do
       after(:create) { create_list(:comment, 2) }

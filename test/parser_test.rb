@@ -22,4 +22,15 @@ class ParserTest < Minitest::Test
     assert_includes relations, ["post", "comment", "create_list", "with_comments"]
     assert_includes relations, ["comment", "post", "association", nil]
   end
+
+  def test_deduplicates_implicit_associations_between_the_same_factories
+    implicit_relations = @parser.edges.select do |edge|
+      edge.source == "post" &&
+        edge.target == "account" &&
+        edge.kind == "implicit association" &&
+        edge.trait.nil?
+    end
+
+    assert_equal 1, implicit_relations.size
+  end
 end
