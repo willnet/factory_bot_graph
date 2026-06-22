@@ -6,8 +6,8 @@ class GraphTest < Minitest::Test
   FIXTURE = File.expand_path("fixtures/factories.rb", __dir__)
 
   def setup
-    parsed = FactoryBotGraph::Parser.new.parse_files([FIXTURE])
-    @graph = FactoryBotGraph::Graph.new(parsed.factories, parsed.edges)
+    parsed = FactoryBotGraphStatic::Parser.new.parse_files([FIXTURE])
+    @graph = FactoryBotGraphStatic::Graph.new(parsed.factories, parsed.edges)
   end
 
   def test_renders_mermaid

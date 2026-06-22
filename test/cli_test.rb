@@ -11,7 +11,7 @@ class CLITest < Minitest::Test
     stdout = StringIO.new
     stderr = StringIO.new
 
-    status = FactoryBotGraph::CLI.new(stdout:, stderr:).run(["--factory", "author", "--format", "dot", FIXTURE])
+    status = FactoryBotGraphStatic::CLI.new(stdout:, stderr:).run(["--factory", "author", "--format", "dot", FIXTURE])
 
     assert_equal 0, status
     assert_includes stdout.string, '"author" -> "account"'
@@ -21,7 +21,7 @@ class CLITest < Minitest::Test
   def test_reports_missing_factory
     stderr = StringIO.new
 
-    status = FactoryBotGraph::CLI.new(stdout: StringIO.new, stderr:).run(["--factory", "missing", FIXTURE])
+    status = FactoryBotGraphStatic::CLI.new(stdout: StringIO.new, stderr:).run(["--factory", "missing", FIXTURE])
 
     assert_equal 1, status
     assert_includes stderr.string, "Factory not found: missing"
@@ -31,7 +31,7 @@ class CLITest < Minitest::Test
     stdout = StringIO.new
     stderr = StringIO.new
 
-    status = FactoryBotGraph::CLI.new(stdout:, stderr:).run([FIXTURE])
+    status = FactoryBotGraphStatic::CLI.new(stdout:, stderr:).run([FIXTURE])
 
     assert_equal 0, status
     refute_includes stdout.string, "trait: with_comments"
@@ -42,7 +42,7 @@ class CLITest < Minitest::Test
     stdout = StringIO.new
     stderr = StringIO.new
 
-    status = FactoryBotGraph::CLI.new(stdout:, stderr:).run(["--traits", FIXTURE])
+    status = FactoryBotGraphStatic::CLI.new(stdout:, stderr:).run(["--traits", FIXTURE])
 
     assert_equal 0, status
     assert_includes stdout.string, "trait: with_comments"
@@ -59,7 +59,7 @@ class CLITest < Minitest::Test
       FileUtils.cp(FIXTURE, File.join(factories, "factories.rb"))
 
       Dir.chdir(directory) do
-        status = FactoryBotGraph::CLI.new(stdout:, stderr:).run([])
+        status = FactoryBotGraphStatic::CLI.new(stdout:, stderr:).run([])
 
         assert_equal 0, status
       end

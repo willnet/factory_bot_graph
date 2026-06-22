@@ -1,10 +1,10 @@
-# factory_bot_graph
+# factory_bot_graph_static
 
 > [!WARNING]
 > This project is experimental. Its behavior, supported syntax, and command-line
 > interface may change without notice.
 
-`factory_bot_graph` statically analyzes FactoryBot definitions and renders the
+`factory_bot_graph_static` statically analyzes FactoryBot definitions and renders the
 relationships between factories. It helps answer a deceptively hard question:
 "What else will be built when I create this factory?"
 
@@ -18,7 +18,7 @@ Ruby 3.3 or later is required.
 Run the executable from the root of a Rails application:
 
 ```sh
-bundle exec factory_bot_graph
+bundle exec factory_bot_graph_static
 ```
 
 By default, the CLI searches `spec/factories` and `test/factories`. You can
@@ -37,21 +37,21 @@ Paste the result into a Mermaid-compatible Markdown viewer, or generate a
 Graphviz DOT file:
 
 ```sh
-bundle exec factory_bot_graph --format dot > factories.dot
+bundle exec factory_bot_graph_static --format dot > factories.dot
 dot -Tsvg factories.dot > factories.svg
 ```
 
 To focus on everything reachable from one factory:
 
 ```sh
-bundle exec factory_bot_graph --factory post
+bundle exec factory_bot_graph_static --factory post
 ```
 
 By default, relationships that only appear when traits are selected are omitted.
 To include them:
 
 ```sh
-bundle exec factory_bot_graph --traits
+bundle exec factory_bot_graph_static --traits
 ```
 
 ## Detected relationships

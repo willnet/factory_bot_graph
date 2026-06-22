@@ -6,7 +6,7 @@ class ParserTest < Minitest::Test
   FIXTURE = File.expand_path("fixtures/factories.rb", __dir__)
 
   def setup
-    @parser = FactoryBotGraph::Parser.new.parse_files([FIXTURE])
+    @parser = FactoryBotGraphStatic::Parser.new.parse_files([FIXTURE])
   end
 
   def test_finds_factories

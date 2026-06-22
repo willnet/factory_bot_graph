@@ -2,7 +2,7 @@
 
 require "optparse"
 
-module FactoryBotGraph
+module FactoryBotGraphStatic
   class CLI
     DEFAULT_PATHS = %w[spec/factories test/factories].freeze
 
@@ -23,7 +23,7 @@ module FactoryBotGraph
       @stdout.write(graph.render(**options))
       0
     rescue ArgumentError, OptionParser::ParseError, SyntaxError => error
-      @stderr.puts("factory_bot_graph: #{error.message}")
+      @stderr.puts("factory_bot_graph_static: #{error.message}")
       1
     end
 
@@ -31,7 +31,7 @@ module FactoryBotGraph
 
     def option_parser(options)
       OptionParser.new do |opts|
-        opts.banner = "Usage: factory_bot_graph [options] [file_or_directory ...]"
+        opts.banner = "Usage: factory_bot_graph_static [options] [file_or_directory ...]"
         opts.on("-f", "--format FORMAT", %w[mermaid dot], "Output format: mermaid or dot") { |value| options[:format] = value }
         opts.on("-r", "--factory NAME", "Only render dependencies reachable from a factory") { |value| options[:root] = value }
         opts.on("--[no-]traits", "Include relationships declared in traits (default: false)") { |value| options[:include_traits] = value }

@@ -2,7 +2,7 @@
 
 require "set"
 
-module FactoryBotGraph
+module FactoryBotGraphStatic
   class Graph
     def initialize(factories, edges)
       @factories = factories

@@ -2,7 +2,7 @@
 
 require "prism"
 
-module FactoryBotGraph
+module FactoryBotGraphStatic
   Factory = Struct.new(:name, :file, :line)
   Edge = Struct.new(:source, :target, :kind, :trait, :file, :line)
 
